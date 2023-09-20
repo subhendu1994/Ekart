@@ -3,7 +3,6 @@ pipeline {
 
     // Define tools to be used in this pipeline
     tools {
-        jdk 'java'
         maven 'Maven'
     }
 
