@@ -42,7 +42,12 @@ pipeline {
                 sh "mvn clean package -DskipTests=true"
             }
         }
-       stage('Docker Build & Push') {
+       stage('Deploy To Nexus') {
+           steps {
+               withMaven(globalMavenSettingsConfig: 'global-xml') {
+               sh "  mvn deploy package -DskipTests=true  
+        
+        stage('Docker Build & Push') {
             steps {
                 script{
                    
