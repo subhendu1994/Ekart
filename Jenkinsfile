@@ -29,7 +29,8 @@ pipeline {
         }
         stage('Sonarqube') {
             steps {
-                withSonarQubeEnv('sonar-server'){
+                
+                withSonarQubeEnv(credentialsId: 'sonar-cred') {
                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Shopping-Cart \
                    -Dsonar.java.binaries=. \
                    -Dsonar.projectKey=Shopping-Cart '''
