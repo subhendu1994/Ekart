@@ -73,14 +73,19 @@ pipeline {
                 }
             }
         }
-            stage('Deploy Application') {
-            steps {
-                script{
-                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker run -d --name ekats -p 8090:8090 subhendunath/shopping-cart:latest"
-    }
+             stage('Deploy Application') {
+    steps {
+        script {
+            // Use Docker Registry credentials with the ID 'docker-cred' and the 'docker' tool
+            withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                // Run a Docker container in detached mode with the name 'ekats'
+                // Expose port 8090 on the host and map it to port 8090 in the container
+                sh "docker run -d --name ekats -p 8090:8090 subhendunath/shopping-cart:latest"
+            }
         }
-       }
-      }
     }
+}
+       
+    }
+}
     
