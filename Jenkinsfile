@@ -80,7 +80,7 @@ pipeline {
             withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
                 // Run a Docker container in detached mode with the name 'ekats'
                 // Expose port 8090 on the host and map it to port 8090 in the container
-                sh "docker run -d --name ekats -p 8090:8090 subhendunath/shopping-cart:latest"
+                sh "docker run -d --name myshopping -p 8090:8090 subhendunath/shopping-cart:latest"
             }
         }
     }
