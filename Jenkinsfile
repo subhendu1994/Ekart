@@ -79,4 +79,8 @@ pipeline {
                      withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
                         sh "docker run -d --name ekats -p 8090:8090 subhendunath/shopping-cart:latest"
     }
-}
+        }
+       }
+      }
+    }
+    
