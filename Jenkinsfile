@@ -28,28 +28,6 @@ pipeline {
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
-        stage('Sonarqube') {
-            steps {
-                   withSonarQubeEnv(credentialsId: 'sonar') {
-                   sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Shopping-Cart \
-                   -Dsonar.java.binaries=. \
-                   -Dsonar.projectKey=Shopping-Cart '''
-               }
-            }
-        }
-        stage('Build') {
-            steps {
-                sh "mvn clean package -DskipTests=true"
-            }
-        }
-       stage('Deploy To Nexus') {
-           steps {
-               withMaven(globalMavenSettingsConfig: 'global-xml') {
-               sh "mvn deploy -DskipTests=true"
-        
-               }
-          
-           }
-       } 
+       
     }   
     }
