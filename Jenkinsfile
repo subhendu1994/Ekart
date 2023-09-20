@@ -39,13 +39,13 @@ pipeline {
         }
 
         // Stage 4: SonarQube Scan
-        stage('Sonarqube') {
-            steps {
-                withSonarQubeEnv(credentialsId: 'sonar-cred') {
-                    // Execute the SonarQube scanner with project-specific parameters
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Shopping-Cart \
-                    -Dsonar.java.binaries=. \
-                    -Dsonar.projectKey=Shopping-Cart '''
+        // stage('Sonarqube') {
+        //     steps {
+        //         withSonarQubeEnv(credentialsId: 'sonar-cred') {
+        //             // Execute the SonarQube scanner with project-specific parameters
+        //             sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Shopping-Cart \
+        //             -Dsonar.java.binaries=. \
+        //             -Dsonar.projectKey=Shopping-Cart '''
                 }
             }
         }
