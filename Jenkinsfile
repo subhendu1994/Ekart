@@ -51,5 +51,14 @@ pipeline {
                }
             }
         }
+            stage('Deploy To Nexus') {
+           steps {
+               withMaven(globalMavenSettingsConfig: 'global-xml') {
+               sh "mvn deploy -DskipTests=true"
+        
+               }
+          
+           }
+       } 
     }
 }
