@@ -41,7 +41,6 @@ pipeline {
         // Stage 4: SonarQube Scan
         stage('Sonarqube') {
             steps {
-                // Configure the SonarQube environment with credentials
                 withSonarQubeEnv(credentialsId: 'sonar-cred') {
                     // Execute the SonarQube scanner with project-specific parameters
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Shopping-Cart \
