@@ -60,5 +60,18 @@ pipeline {
           
            }
        } 
+          stage('Docker Build & Push') {
+            steps {
+                script{
+                   // This step should not normally be used in your script. Consult the inline help for details.
+                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                        
+                        sh "docker build -t shopping-cart -f docker/Dockerfile ."
+                        sh "docker tag  shopping-cart subhendunath/shopping-cart:latest"
+                        sh "docker push subhendunath/shopping-cart:latest"
+                    }
+                }
+            }
+        }
     }
 }
