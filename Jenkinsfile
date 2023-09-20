@@ -28,5 +28,14 @@ pipeline {
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
+        stage('Sonarqube') {
+            steps {
+                   withSonarQubeEnv(credentialsId: 'sonarqube-cred') {
+                   sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Shopping-Cart \
+                   -Dsonar.java.binaries=. \
+                   -Dsonar.projectKey=Shopping-Cart '''
+               }
+            }
+        }
     }   
     }
