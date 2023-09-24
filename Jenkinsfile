@@ -26,6 +26,8 @@ pipeline {
             steps {
                 sh "mvn clean package -DskipTests=true"
             }
+      }
+      
     }
 }
     
