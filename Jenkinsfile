@@ -4,6 +4,10 @@ pipeline {
     // Define tools to be used in this pipeline
     tools {
       maven 'Maven'
+          // Set environment variables
+    environment {
+        SCANNER_HOME = tool 'sonar'
+    }  
     }
     
     stages {
@@ -29,8 +33,8 @@ pipeline {
       }
       stage('Sonarqube') {
             steps {
-                withSonarQubeEnv('sonar') {
-                   sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Shopping-Cart \
+                withSonarQubeEnv(credentialsId: 'sonar-cred') {
+                sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Shopping-Cart \
                    -Dsonar.java.binaries=. \
                    -Dsonar.projectKey=Shopping-Cart '''
                }
