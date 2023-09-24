@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    // Define tools to be used in this pipeline
+    tools {
+      maven 'maven'
+    }
+    
     stages {
      // Stage 1: Git Checkout
       stage('Git Checkout') {
@@ -10,5 +15,13 @@ pipeline {
         }
       }
     }
+    // Stage 2: Compile
+    stage('Compile') {
+        steps {
+        // Clean and compile the project using Maven, skipping tests
+            sh "mvn clean compile -DskipTests=true"
+            }
+        }    
+
 }
     
