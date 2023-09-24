@@ -15,8 +15,8 @@ pipeline {
         }
       }
     }
-    // Stage 2: Compile
-    stage('Compile') {
+      // Stage 2: Compile
+      stage('Compile') {
         steps {
         // Clean and compile the project using Maven, skipping tests
             sh "mvn clean compile -DskipTests=true"
