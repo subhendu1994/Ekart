@@ -5,9 +5,10 @@ pipeline {
     tools {
       maven 'Maven'
           // Set environment variables
-    environment {
+    }
+        environment {
         SCANNER_HOME = tool 'sonar'
-    }  
+      
     }
     
     stages {
