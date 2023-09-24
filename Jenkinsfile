@@ -3,7 +3,7 @@ pipeline {
 
     // Define tools to be used in this pipeline
     tools {
-      maven 'maven'
+      maven 'Maven'
     }
     
     stages {
@@ -19,9 +19,9 @@ pipeline {
       stage('Compile') {
         steps {
         // Clean and compile the project using Maven, skipping tests
-            sh "mvn clean compile -DskipTests=true"
-            }
-        }    
+          sh "mvn clean compile -DskipTests=true"
+        }
+      }    
 
 }
     
