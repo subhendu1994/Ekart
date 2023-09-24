@@ -14,7 +14,7 @@ pipeline {
             checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/subhendu1994/Ekart.git']])
         }
       }
-    }
+    
       // Stage 2: Compile
       stage('Compile') {
         steps {
@@ -22,6 +22,6 @@ pipeline {
           sh "mvn clean compile -DskipTests=true"
         }
       }    
-
+    }
 }
     
