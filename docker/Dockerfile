@@ -4,7 +4,7 @@ EXPOSE 8060
 
 ENV APP_HOME /usr/src/app
 
-COPY target/shopping-cart-0.0.1-SNAPSHOT.jar $APP_HOME/app.jar
+COPY target/*.jar /
 
 WORKDIR $APP_HOME
 
